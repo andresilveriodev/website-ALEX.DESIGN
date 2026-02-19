@@ -1,9 +1,11 @@
-<html class="scroll-smooth" lang="en"><head><meta charset="utf-8"/>
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR"><head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <title>Portfolio - Product Designer</title>
-<script src="assets/resource_3fa48481346f.js"></script>
-<script src="assets/iconify-icon_d39ffc6e4c56.js"></script>
-<link href="assets/css2_19fd9cc6b396.css" rel="stylesheet"/>
+<script src="js/main.js"></script>
+<script src="js/iconify-icon.js"></script>
+<link href="css/main.css" rel="stylesheet"/>
 <style>
 body { font-family: 'Inter', sans-serif; background-color: #EAEAE5; color: #1C1C1C; overflow-x: hidden; }
 /* Base Reveal Animation (Scroll triggered) */
@@ -22,6 +24,7 @@ display: block;
 .delay-100 { transition-delay: 0.1s; }
 .delay-200 { transition-delay: 0.2s; }
 .delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
 .delay-500 { transition-delay: 0.5s; }
 .delay-700 { transition-delay: 0.7s; }
 /* Carousel Fade & Ken Burns */
@@ -37,10 +40,11 @@ display: block;
 .animate-marquee { display: inline-block; padding-left: 100%; animation: marquee 30s linear infinite; }
 /* Add a clone to the HTML for seamless loop or use padding method */
 .marquee-container { display: flex; overflow: hidden; user-select: none; }
-.marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; min-width: 100%; animation: scroll 40s linear infinite; }
-@keyframes scroll {
+.marquee-track { display: flex; flex-shrink: 0; width: 200%; animation: marquee-scroll 40s linear infinite; }
+.marquee-content { flex-shrink: 0; display: flex; justify-content: space-around; width: 50%; }
+@keyframes marquee-scroll {
 from { transform: translateX(0); }
-to { transform: translateX(-100%); }
+to { transform: translateX(-50%); }
 }
 /* Nav Load Animation */
 .nav-load { opacity: 0; transform: translateY(-10px); transition: all 0.8s ease-out; }
@@ -50,6 +54,8 @@ iconify-icon { display: inline-flex; align-items: center; justify-content: cente
 /* Utilities */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .parallax-element { will-change: transform; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
 </style></head>
 <body class="antialiased min-h-screen selection:bg-stone-800 selection:text-white pb-10">
 <!-- Main Container -->
@@ -84,15 +90,15 @@ iconify-icon { display: inline-flex; align-items: center; justify-content: cente
 <div class="w-full h-full relative" id="hero-carousel">
 <!-- Slide 1 -->
 <div class="carousel-slide active">
-<img class="w-full h-full object-cover grayscale contrast-125 parallax-img" data-speed="0.05" src="assets/c7fa69dd-d7fb-48f2-a866-ef3663_f6b789593f38.webp"/>
+<img class="w-full h-full object-cover grayscale contrast-125" src="images/hero-1.webp" alt="Hero 1"/>
 </div>
 <!-- Slide 2 -->
 <div class="carousel-slide">
-<img class="w-full h-full object-cover grayscale contrast-125 parallax-img" data-speed="0.05" src="assets/6c710de5-9712-4c8e-a7db-59ac54_b647957b5aa5.webp"/>
+<img class="w-full h-full object-cover grayscale contrast-125" src="images/hero-2.webp" alt="Hero 2"/>
 </div>
 <!-- Slide 3 -->
 <div class="carousel-slide">
-<img class="w-full h-full object-cover grayscale contrast-125 parallax-img" data-speed="0.05" src="assets/62cc53b7-3355-4618-b7fa-3283f6_a6d3415bc434.webp"/>
+<img class="w-full h-full object-cover grayscale contrast-125" src="images/hero-3.webp" alt="Hero 3"/>
 </div>
 </div>
 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-stone-900/40 pointer-events-none"></div>
@@ -145,6 +151,7 @@ iconify-icon { display: inline-flex; align-items: center; justify-content: cente
 <!-- Marquee / Divider -->
 <div class="border-b border-stone-300 overflow-hidden py-6 bg-stone-100/50">
 <div class="marquee-container">
+<div class="marquee-track">
 <div class="marquee-content">
 <span class="text-sm font-mono uppercase tracking-widest text-stone-500 mx-8">Baseado em São Paulo  (Brasil)</span>
 <span class="text-sm font-mono uppercase tracking-widest text-stone-500 mx-8">•</span>
@@ -161,6 +168,7 @@ iconify-icon { display: inline-flex; align-items: center; justify-content: cente
 <span class="text-sm font-mono uppercase tracking-widest text-stone-500 mx-8">•</span>
 <span class="text-sm font-mono uppercase tracking-widest text-stone-500 mx-8">Disponível para novos projetos no 4º trimestre de 2026</span>
 <span class="text-sm font-mono uppercase tracking-widest text-stone-500 mx-8">•</span>
+</div>
 </div>
 </div>
 </div>
@@ -227,7 +235,7 @@ Baixar currículo
 </div>
 <div class="col-span-7 hidden md:block relative overflow-hidden">
 <div class="absolute inset-0 bg-stone-100 flex items-center justify-center p-8">
-<img class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" src="assets/4b7d31e6-5b45-47eb-9853-96bbb9_bf1aa5f9d2cf.webp"/>
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" src="images/projeto-nova-finance.webp" alt="Nova Finance"/>
 </div>
 </div>
 </div>
@@ -245,7 +253,7 @@ Baixar currículo
 </div>
 <div class="col-span-7 hidden md:block relative overflow-hidden">
 <div class="absolute inset-0 bg-stone-100 flex items-center justify-center p-8">
-<img class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" src="assets/5ea5c0e9-3047-467a-9eaf-e49f65_6a6f021d85c6.webp"/>
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" src="images/projeto-orbit-systems.webp" alt="Orbit Systems"/>
 </div>
 </div>
 </div>
@@ -263,13 +271,13 @@ Baixar currículo
 </div>
 <div class="col-span-7 hidden md:block relative overflow-hidden">
 <div class="absolute inset-0 bg-stone-100 flex items-center justify-center p-8">
-<img class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" src="assets/ddab06d9-9060-42a5-9052-32121a_7062a2506669.webp"/>
+<img class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" src="images/projeto-canvas-supply.webp" alt="Canvas Supply"/>
 </div>
 </div>
 </div>
 </div>
 <div class="flex justify-center mt-12 reveal">
-<a class="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest border border-stone-900 rounded-full px-8 py-3 hover:bg-stone-900 hover:text-white transition-all" href="#projetos">
+<a class="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest border border-stone-900 rounded-full px-8 py-3 hover:bg-stone-900 hover:text-white transition-all" href="#work">
 Ver todos os projetos
 <iconify-icon class="text-lg" icon="solar:arrow-right-linear"></iconify-icon>
 </a>
@@ -315,10 +323,10 @@ Reflexões sobre a interseção entre design, tecnologia e psicologia humana —
 </section>
 <!-- Image Grid Parallax -->
 <section class="relative z-10 grid grid-cols-2 md:grid-cols-4 border-b border-stone-300 h-[300px] overflow-hidden">
-<img class="w-full h-[120%] object-cover grayscale opacity-80 border-r border-stone-300 parallax-img" data-speed="0.05" src="assets/ede50f82-0ad0-4579-a4ae-3a9428_fd09ad4bf2a1.jpg"/>
-<img class="w-full h-[120%] object-cover grayscale opacity-80 border-r border-stone-300 parallax-img" data-speed="0.08" src="assets/e9d001f3-ebe3-45c2-b556-b53a55_6b8718ffa723.jpg"/>
-<img class="w-full h-[120%] object-cover grayscale opacity-80 border-r border-stone-300 parallax-img" data-speed="0.03" src="assets/87e5e02b-a5b6-43ff-b9a4-5e299f_665111a88a86.jpg"/>
-<img class="w-full h-[120%] object-cover grayscale opacity-80 parallax-img" data-speed="0.1" src="assets/2700a02e-2471-497e-8ca2-3196fc_50242a508302.webp"/>
+<img class="w-full h-[120%] object-cover grayscale opacity-80 border-r border-stone-300 parallax-img" data-speed="0.05" src="images/grid-1.jpg" alt="Grid 1"/>
+<img class="w-full h-[120%] object-cover grayscale opacity-80 border-r border-stone-300 parallax-img" data-speed="0.08" src="images/grid-2.jpg" alt="Grid 2"/>
+<img class="w-full h-[120%] object-cover grayscale opacity-80 border-r border-stone-300 parallax-img" data-speed="0.03" src="images/grid-3.jpg" alt="Grid 3"/>
+<img class="w-full h-[120%] object-cover grayscale opacity-80 parallax-img" data-speed="0.1" src="images/grid-4.webp" alt="Grid 4"/>
 </section>
 <!-- Confiado por times de (área para logos/parceiros) -->
 <section class="relative z-10 border-b border-stone-300 py-24 bg-stone-100">
@@ -457,12 +465,13 @@ Product Designer focado em sistemas digitais e microinterações. Baseado em Sã
             // 3. Carousel Logic
             const slides = document.querySelectorAll('.carousel-slide');
             let currentSlide = 0;
-            
-            setInterval(() => {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }, 5000);
+            if (slides.length > 1) {
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 5000);
+            }
 
             // 4. Parallax Logic
             window.addEventListener('scroll', () => {
